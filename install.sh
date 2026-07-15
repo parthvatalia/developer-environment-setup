@@ -177,7 +177,7 @@ setup_python() {
             install_package python
         else
             install_package python3
-            install_package python3-pip
+            install_package python3-pip pip3
         fi
     fi
 

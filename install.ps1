@@ -50,6 +50,15 @@ function Setup-PackageManager {
     }
 }
 
+function Add-ToPath {
+    param([string]$NewPath)
+    $UserPath = [Environment]::GetEnvironmentVariable("Path", [EnvironmentVariableTarget]::User)
+    if ($UserPath -notmatch [regex]::Escape($NewPath)) {
+        [Environment]::SetEnvironmentVariable("Path", $UserPath + ";$NewPath", [EnvironmentVariableTarget]::User)
+        Write-Color "✅ Added $NewPath to User PATH." "Green"
+    }
+}
+
 # --- Technology Profiles ---
 
 function Setup-Flutter {
@@ -69,9 +78,15 @@ function Setup-Flutter {
         Write-Color "Installing IDEs and toolchains..." "Cyan"
         Install-Package "Microsoft.VisualStudioCode"
         Install-Package "Google.AndroidStudio"
+        
+        Write-Color "Setting up Android SDK paths..." "Cyan"
+        $LocalAppData = [Environment]::GetFolderPath("LocalApplicationData")
+        Add-ToPath "$LocalAppData\Android\Sdk\platform-tools"
+        Add-ToPath "$LocalAppData\Android\Sdk\cmdline-tools\latest\bin"
+        Add-ToPath "$LocalAppData\Android\Sdk\emulator"
     }
     
-    Write-Color "`nFlutter setup complete! Note: You may need to restart your terminal to run 'flutter doctor'." "Green"
+    Write-Color "`nFlutter setup complete! Note: You may need to restart your terminal to run 'flutter doctor' or load new PATH variables." "Green"
 }
 
 function Setup-ReactNative {
@@ -91,9 +106,15 @@ function Setup-ReactNative {
         Write-Color "Installing Mobile Toolchains..." "Cyan"
         Install-Package "Google.AndroidStudio"
         Install-Package "Microsoft.VisualStudioCode"
+        
+        Write-Color "Setting up Android SDK paths..." "Cyan"
+        $LocalAppData = [Environment]::GetFolderPath("LocalApplicationData")
+        Add-ToPath "$LocalAppData\Android\Sdk\platform-tools"
+        Add-ToPath "$LocalAppData\Android\Sdk\cmdline-tools\latest\bin"
+        Add-ToPath "$LocalAppData\Android\Sdk\emulator"
     }
     
-    Write-Color "`nReact Native setup complete! (Use npx react-native init to start)" "Green"
+    Write-Color "`nReact Native setup complete! Note: You may need to restart your terminal. (Use npx react-native init to start)" "Green"
 }
 
 function Setup-Python {

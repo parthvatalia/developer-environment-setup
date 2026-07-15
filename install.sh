@@ -96,10 +96,18 @@ setup_flutter() {
             install_package visual-studio-code
             install_package android-studio
             install_package cocoapods
+            echo -e "${CYAN}Setting up Android SDK paths...${NC}"
+            add_to_path "\$HOME/Library/Android/sdk/platform-tools"
+            add_to_path "\$HOME/Library/Android/sdk/cmdline-tools/latest/bin"
+            add_to_path "\$HOME/Library/Android/sdk/emulator"
         else
             install_package code
             # Android studio installation via apt/snap on Linux
             sudo snap install android-studio --classic
+            echo -e "${CYAN}Setting up Android SDK paths...${NC}"
+            add_to_path "\$HOME/Android/Sdk/platform-tools"
+            add_to_path "\$HOME/Android/Sdk/cmdline-tools/latest/bin"
+            add_to_path "\$HOME/Android/Sdk/emulator"
         fi
     fi
     
@@ -134,9 +142,17 @@ setup_react_native() {
             install_package cocoapods
             install_package android-studio
             install_package visual-studio-code
+            echo -e "${CYAN}Setting up Android SDK paths...${NC}"
+            add_to_path "\$HOME/Library/Android/sdk/platform-tools"
+            add_to_path "\$HOME/Library/Android/sdk/cmdline-tools/latest/bin"
+            add_to_path "\$HOME/Library/Android/sdk/emulator"
         else
             sudo snap install android-studio --classic
             install_package code
+            echo -e "${CYAN}Setting up Android SDK paths...${NC}"
+            add_to_path "\$HOME/Android/Sdk/platform-tools"
+            add_to_path "\$HOME/Android/Sdk/cmdline-tools/latest/bin"
+            add_to_path "\$HOME/Android/Sdk/emulator"
         fi
     fi
     echo -e "✅ ${GREEN}React Native setup complete!${NC} (Use npx react-native init to start)"
@@ -166,6 +182,7 @@ setup_python() {
         else
             pip3 install poetry --break-system-packages || pip3 install poetry
             install_package code
+            add_to_path "\$HOME/.local/bin"
         fi
     fi
     echo -e "✅ ${GREEN}Python setup complete!${NC}"

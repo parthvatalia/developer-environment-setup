@@ -24,6 +24,13 @@ esac
 # --- Dependency Management ---
 install_package() {
     local pkg=$1
+    local cmd_name=${2:-$pkg}
+
+    if command -v "$cmd_name" &> /dev/null; then
+        echo -e "✅ ${GREEN}$pkg${NC} is already installed (found in PATH)."
+        return 0
+    fi
+
     if [ "$MACHINE" == "Mac" ]; then
         if brew list $pkg &>/dev/null || brew list --cask $pkg &>/dev/null; then
             echo -e "✅ ${GREEN}$pkg${NC} is already installed."
@@ -93,9 +100,9 @@ setup_flutter() {
     if [[ "$FLUTTER_OPT" == "1" || "$FLUTTER_OPT" == "3" ]]; then
         echo -e "${CYAN}Installing IDEs and toolchains...${NC}"
         if [ "$MACHINE" == "Mac" ]; then
-            install_package visual-studio-code
-            install_package android-studio
-            install_package cocoapods
+            install_package visual-studio-code code
+            install_package android-studio studio
+            install_package cocoapods pod
             echo -e "${CYAN}Setting up Android SDK paths...${NC}"
             add_to_path "\$HOME/Library/Android/sdk/platform-tools"
             add_to_path "\$HOME/Library/Android/sdk/cmdline-tools/latest/bin"
@@ -128,20 +135,20 @@ setup_react_native() {
         
         if [ "$MACHINE" == "Mac" ]; then
             install_package watchman
-            install_package openjdk@17
+            install_package openjdk@17 java
             install_package ruby
         else
             install_package watchman
-            install_package openjdk-17-jdk
+            install_package openjdk-17-jdk java
         fi
     fi
 
     if [[ "$RN_OPT" == "1" ]]; then
         echo -e "${CYAN}Installing Mobile Toolchains...${NC}"
         if [ "$MACHINE" == "Mac" ]; then
-            install_package cocoapods
-            install_package android-studio
-            install_package visual-studio-code
+            install_package cocoapods pod
+            install_package android-studio studio
+            install_package visual-studio-code code
             echo -e "${CYAN}Setting up Android SDK paths...${NC}"
             add_to_path "\$HOME/Library/Android/sdk/platform-tools"
             add_to_path "\$HOME/Library/Android/sdk/cmdline-tools/latest/bin"
@@ -178,7 +185,7 @@ setup_python() {
         echo -e "${CYAN}Installing Package Managers & IDEs...${NC}"
         if [ "$MACHINE" == "Mac" ]; then
             install_package poetry
-            install_package visual-studio-code
+            install_package visual-studio-code code
         else
             pip3 install poetry --break-system-packages || pip3 install poetry
             install_package code

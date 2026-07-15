@@ -1,6 +1,13 @@
 # DevForge 🛠️
 
+[![Website](https://img.shields.io/website?url=https%3A%2F%2Fparthvatalia.github.io%2Fdeveloper-environment-setup%2F)](https://parthvatalia.github.io/developer-environment-setup/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Bash](https://img.shields.io/badge/Language-Bash-4EAA25.svg?logo=gnu-bash&logoColor=white)](install.sh)
+[![PowerShell](https://img.shields.io/badge/Language-PowerShell-5391FE.svg?logo=powershell&logoColor=white)](install.ps1)
+
 **One command to build your complete development environment.**
+
+🌍 **[Visit the official DevForge website](https://parthvatalia.github.io/developer-environment-setup/)**
 
 DevForge solves the entire "new machine setup" problem. Instead of hunting down individual installers, managing paths, and running one-off scripts, DevForge gives you a single, interactive command to configure your machine for your exact tech stack (Flutter, React Native, Python, etc.).
 

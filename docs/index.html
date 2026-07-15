@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevForge | One Command to Build Your Development Environment</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="DevForge is a powerful, cross-platform CLI tool that sets up your complete development environment (Flutter, React Native, Python) with a single command. Say goodbye to manual SDK installations and path configurations.">
+    <meta name="keywords" content="developer environment, environment setup, flutter setup script, react native setup, python environment setup, cli tool, devforge, SDK installer, automated dev setup, macos dev setup, windows dev setup">
+    <meta name="author" content="Parth Vataliya">
+    <link rel="canonical" href="https://parthvatalia.github.io/developer-environment-setup/">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://parthvatalia.github.io/developer-environment-setup/">
+    <meta property="og:title" content="DevForge | One Command to Build Your Development Environment">
+    <meta property="og:description" content="DevForge is a powerful, cross-platform CLI tool that sets up your complete development environment (Flutter, React Native, Python) with a single command.">
+    <meta property="og:image" content="https://parthvatalia.github.io/developer-environment-setup/og-image.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://parthvatalia.github.io/developer-environment-setup/">
+    <meta property="twitter:title" content="DevForge | One Command to Build Your Development Environment">
+    <meta property="twitter:description" content="DevForge is a powerful, cross-platform CLI tool that sets up your complete development environment (Flutter, React Native, Python) with a single command.">
+    <meta property="twitter:image" content="https://parthvatalia.github.io/developer-environment-setup/og-image.jpg">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Fira+Code:wght@400;600&family=Orbitron:wght@500;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="grid-background"></div>
+    
+    <header class="hero">
+        <div class="hero-content">
+            <div class="badge">v1.0.0 is live 🚀</div>
+            <h1 class="glitch" data-text="DevForge">DevForge</h1>
+            <p class="subtitle">One command to build your complete development workspace.</p>
+            <p class="description">Stop hunting for installers, managing paths, and running one-off scripts. Choose your stack, press enter, and start coding.</p>
+            
+            <div class="terminal-container">
+                <div class="terminal-header">
+                    <span class="dot red"></span>
+                    <span class="dot yellow"></span>
+                    <span class="dot green"></span>
+                    <div class="terminal-title">bash</div>
+                </div>
+                <div class="terminal-body">
+                    <p class="comment"># For macOS and Linux</p>
+                    <div class="command-row">
+                        <span class="prompt">$</span>
+                        <code id="mac-cmd">/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/parthvatalia/developer-environment-setup/main/install.sh)"</code>
+                        <button class="copy-btn" onclick="copyCommand('mac-cmd', this)" aria-label="Copy macOS command">
+                            <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                        </button>
+                    </div>
+                    
+                    <p class="comment mt-4"># For Windows (PowerShell)</p>
+                    <div class="command-row">
+                        <span class="prompt">PS></span>
+                        <code id="win-cmd">Invoke-WebRequest -Uri "https://raw.githubusercontent.com/parthvatalia/developer-environment-setup/main/install.ps1" -OutFile "install.ps1"; .\install.ps1</code>
+                        <button class="copy-btn" onclick="copyCommand('win-cmd', this)" aria-label="Copy Windows command">
+                            <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cta-actions">
+                <a href="https://github.com/parthvatalia/developer-environment-setup" class="primary-btn glow-btn" target="_blank" rel="noopener noreferrer">
+                    <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                    View on GitHub
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="features-section">
+        <h2 class="section-title">Supported Tech Stacks</h2>
+        <div class="tech-grid">
+            <div class="tech-card">
+                <div class="tech-icon flutter-icon">F</div>
+                <h3>Flutter</h3>
+                <p>Installs the Flutter SDK, Android Studio, VS Code, and CocoaPods on macOS. Automates the Android SDK paths and emulator setup.</p>
+            </div>
+            <div class="tech-card">
+                <div class="tech-icon react-icon">⚛</div>
+                <h3>React Native</h3>
+                <p>Sets up Node.js, Watchman, Ruby, OpenJDK 17, Android Studio, and VS Code for mobile development without the headache.</p>
+            </div>
+            <div class="tech-card">
+                <div class="tech-icon python-icon">Py</div>
+                <h3>Python</h3>
+                <p>Configures Python 3, Pip, Poetry for dependency management, and VS Code. Automatically adds local bins to your PATH.</p>
+            </div>
+        </div>
+
+        <h2 class="section-title mt-12">Why DevForge?</h2>
+        <div class="benefits-grid">
+            <div class="benefit-item">
+                <h4>⚡ Idempotent Design</h4>
+                <p>Run it safely on an existing machine. DevForge automatically detects if you already have VS Code, Java, or Homebrew installed and skips them gracefully.</p>
+            </div>
+            <div class="benefit-item">
+                <h4>🌍 Cross-Platform</h4>
+                <p>Built for the modern developer. Features native bash scripts for macOS/Linux using Homebrew/Apt, and PowerShell scripts for Windows using Winget/Choco.</p>
+            </div>
+            <div class="benefit-item">
+                <h4>🔧 Profile Based</h4>
+                <p>Choose exactly what you need. Full installation for a fresh computer, or 'SDK Only' if you already have your favorite editors configured.</p>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>Built with ❤️ by <a href="https://github.com/parthvatalia" target="_blank" rel="noopener noreferrer">Parth Vataliya</a>. Open source and ready to fork.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

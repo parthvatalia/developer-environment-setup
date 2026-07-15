@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://parthvatalia.github.io/developer-environment-setup/sitemap.xml

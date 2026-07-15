@@ -1,0 +1,399 @@
+:root {
+    --bg-color: #050505;
+    --card-bg: rgba(20, 20, 25, 0.7);
+    --border-color: rgba(255, 255, 255, 0.1);
+    --primary-cyan: #00f3ff;
+    --primary-purple: #9d00ff;
+    --primary-pink: #ff007f;
+    --text-main: #f0f0f0;
+    --text-muted: #a0a0a0;
+    --font-ui: 'Inter', sans-serif;
+    --font-mono: 'Fira Code', monospace;
+    --font-display: 'Orbitron', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    font-family: var(--font-ui);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* Cyberpunk Grid Background */
+.grid-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-image: 
+        linear-gradient(rgba(0, 243, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 243, 255, 0.03) 1px, transparent 1px);
+    background-size: 30px 30px;
+    z-index: -1;
+    perspective: 1000px;
+    transform: rotateX(60deg) scale(2);
+    transform-origin: top center;
+    animation: gridMove 10s linear infinite;
+    pointer-events: none;
+}
+
+@keyframes gridMove {
+    from { transform: rotateX(60deg) scale(2) translateY(0); }
+    to { transform: rotateX(60deg) scale(2) translateY(30px); }
+}
+
+/* Layout Utilities */
+.hero {
+    min-height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 2rem;
+    position: relative;
+}
+
+.hero-content {
+    max-width: 800px;
+    width: 100%;
+}
+
+.mt-4 { margin-top: 1rem; }
+.mt-12 { margin-top: 4rem; }
+
+/* Badge */
+.badge {
+    display: inline-block;
+    padding: 0.25rem 1rem;
+    background: rgba(0, 243, 255, 0.1);
+    border: 1px solid var(--primary-cyan);
+    border-radius: 50px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--primary-cyan);
+    margin-bottom: 2rem;
+    box-shadow: 0 0 10px rgba(0, 243, 255, 0.2);
+}
+
+/* Glitch Typography */
+.glitch {
+    font-family: var(--font-display);
+    font-size: 4rem;
+    font-weight: 700;
+    color: #fff;
+    position: relative;
+    margin-bottom: 1rem;
+    text-shadow: 0 0 20px rgba(0, 243, 255, 0.5);
+}
+
+.glitch::before, .glitch::after {
+    content: attr(data-text);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.8;
+}
+
+.glitch::before {
+    left: 2px;
+    text-shadow: -2px 0 var(--primary-pink);
+    clip: rect(24px, 550px, 90px, 0);
+    animation: glitch-anim 3s infinite linear alternate-reverse;
+}
+
+.glitch::after {
+    left: -2px;
+    text-shadow: -2px 0 var(--primary-cyan);
+    clip: rect(85px, 550px, 140px, 0);
+    animation: glitch-anim 2.5s infinite linear alternate-reverse;
+}
+
+@keyframes glitch-anim {
+    0% { clip: rect(22px, 9999px, 86px, 0); }
+    20% { clip: rect(66px, 9999px, 12px, 0); }
+    40% { clip: rect(88px, 9999px, 54px, 0); }
+    60% { clip: rect(10px, 9999px, 90px, 0); }
+    80% { clip: rect(90px, 9999px, 44px, 0); }
+    100% { clip: rect(33px, 9999px, 20px, 0); }
+}
+
+.subtitle {
+    font-size: 1.5rem;
+    color: var(--text-main);
+    margin-bottom: 1rem;
+    font-weight: 500;
+}
+
+.description {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    margin-bottom: 3rem;
+    max-width: 600px;
+    margin-inline: auto;
+}
+
+/* Glassmorphism Terminal */
+.terminal-container {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    overflow: hidden;
+    text-align: left;
+    margin-bottom: 3rem;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.05) inset;
+}
+
+.terminal-header {
+    background: rgba(0, 0, 0, 0.5);
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    margin-right: 8px;
+}
+.dot.red { background: #ff5f56; }
+.dot.yellow { background: #ffbd2e; }
+.dot.green { background: #27c93f; }
+
+.terminal-title {
+    margin-left: auto;
+    margin-right: auto;
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+    color: var(--text-muted);
+}
+
+.terminal-body {
+    padding: 1.5rem;
+    font-family: var(--font-mono);
+    font-size: 0.95rem;
+}
+
+.comment { color: #6a9955; margin-bottom: 0.5rem; }
+.prompt { color: var(--primary-pink); margin-right: 0.75rem; user-select: none; }
+code { color: #cecece; word-break: break-all; }
+
+.command-row {
+    display: flex;
+    align-items: flex-start;
+    position: relative;
+    padding-right: 40px;
+}
+
+.copy-btn {
+    position: absolute;
+    right: 0;
+    top: 0;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid var(--border-color);
+    color: var(--text-main);
+    width: 32px;
+    height: 32px;
+    border-radius: 6px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.copy-btn:hover {
+    background: var(--primary-cyan);
+    color: #000;
+    border-color: var(--primary-cyan);
+    box-shadow: 0 0 15px rgba(0, 243, 255, 0.5);
+}
+
+/* Glowing Button */
+.cta-actions {
+    display: flex;
+    justify-content: center;
+}
+
+.glow-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: linear-gradient(90deg, var(--primary-purple), var(--primary-cyan));
+    color: white;
+    text-decoration: none;
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 1.1rem;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    transition: transform 0.2s ease;
+}
+
+.glow-btn::before {
+    content: '';
+    position: absolute;
+    top: -2px; left: -2px; right: -2px; bottom: -2px;
+    background: linear-gradient(90deg, var(--primary-cyan), var(--primary-pink), var(--primary-purple));
+    z-index: -2;
+    filter: blur(15px);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    border-radius: 50px;
+    animation: gradientMove 3s linear infinite;
+}
+
+.glow-btn::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: linear-gradient(90deg, var(--primary-purple), var(--primary-cyan));
+    z-index: -1;
+    border-radius: 50px;
+}
+
+.glow-btn:hover {
+    transform: translateY(-2px);
+}
+
+.glow-btn:hover::before {
+    opacity: 1;
+}
+
+@keyframes gradientMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Sections */
+.features-section {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 4rem 2rem;
+}
+
+.section-title {
+    font-family: var(--font-display);
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 3rem;
+    color: #fff;
+}
+
+/* Tech Grid */
+.tech-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.tech-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 2.5rem 2rem;
+    text-align: center;
+    backdrop-filter: blur(10px);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.tech-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 243, 255, 0.1);
+    border-color: rgba(0, 243, 255, 0.3);
+}
+
+.tech-icon {
+    width: 64px;
+    height: 64px;
+    border-radius: 16px;
+    margin: 0 auto 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.flutter-icon { background: rgba(84, 197, 248, 0.1); color: #54c5f8; border: 1px solid rgba(84, 197, 248, 0.3); }
+.react-icon { background: rgba(97, 218, 251, 0.1); color: #61dafb; border: 1px solid rgba(97, 218, 251, 0.3); }
+.python-icon { background: rgba(255, 212, 59, 0.1); color: #ffd43b; border: 1px solid rgba(255, 212, 59, 0.3); }
+
+.tech-card h3 {
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
+
+.tech-card p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+}
+
+/* Benefits */
+.benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.benefit-item {
+    background: rgba(255, 255, 255, 0.02);
+    border-left: 3px solid var(--primary-purple);
+    padding: 1.5rem;
+    border-radius: 0 8px 8px 0;
+}
+
+.benefit-item h4 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    color: #fff;
+}
+
+.benefit-item p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 3rem 2rem;
+    border-top: 1px solid var(--border-color);
+    margin-top: 4rem;
+    color: var(--text-muted);
+}
+
+footer a {
+    color: var(--primary-cyan);
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .glitch { font-size: 2.5rem; }
+    .subtitle { font-size: 1.2rem; }
+    .terminal-body { font-size: 0.85rem; }
+}

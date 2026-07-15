@@ -83,10 +83,11 @@ add_to_path() {
 # --- Technology Profiles ---
 
 setup_flutter() {
-    echo -e "\n${BLUE}--- Flutter Setup ---${NC}"
-    echo "1) Full Setup (SDK, Android Studio, VS Code, CocoaPods)"
-    echo "2) Only SDK"
-    echo "3) Only IDEs (Android Studio & VS Code)"
+    echo -e "\n${BLUE}╭── Flutter Setup ──╮${NC}"
+    echo -e "  [1] 📦 Full Setup (SDK, Android Studio, VS Code, CocoaPods)"
+    echo -e "  [2] 🛠️  Only SDK"
+    echo -e "  [3] 💻 Only IDEs (Android Studio & VS Code)"
+    echo ""
     read -p "Select option (1-3): " FLUTTER_OPT
 
     if [[ "$FLUTTER_OPT" == "1" || "$FLUTTER_OPT" == "2" ]]; then
@@ -132,9 +133,10 @@ setup_flutter() {
 }
 
 setup_react_native() {
-    echo -e "\n${BLUE}--- React Native Setup ---${NC}"
-    echo "1) Full Setup (Node, Watchman, Ruby, JDK, Android Studio, iOS toolkit)"
-    echo "2) Only SDKs (Node, JDK, Watchman)"
+    echo -e "\n${BLUE}╭── React Native Setup ──╮${NC}"
+    echo -e "  [1] 📦 Full Setup (Node, Watchman, Ruby, JDK, Android Studio, iOS toolkit)"
+    echo -e "  [2] 🛠️  Only SDKs (Node, JDK, Watchman)"
+    echo ""
     read -p "Select option (1-2): " RN_OPT
 
     if [[ "$RN_OPT" == "1" || "$RN_OPT" == "2" ]]; then
@@ -174,9 +176,10 @@ setup_react_native() {
 }
 
 setup_python() {
-    echo -e "\n${BLUE}--- Python Setup ---${NC}"
-    echo "1) Full Setup (Python, Pipenv/Poetry, VS Code)"
-    echo "2) Only SDK (Python & Pip)"
+    echo -e "\n${BLUE}╭── Python Setup ──╮${NC}"
+    echo -e "  [1] 📦 Full Setup (Python, Pipenv/Poetry, VS Code)"
+    echo -e "  [2] 🛠️  Only SDK (Python & Pip)"
+    echo ""
     read -p "Select option (1-2): " PY_OPT
 
     if [[ "$PY_OPT" == "1" || "$PY_OPT" == "2" ]]; then
@@ -205,21 +208,21 @@ setup_python() {
 
 
 # --- Main Menu ---
-echo -e "${BLUE}=======================================${NC}"
-echo -e "${GREEN}             DevForge                  ${NC}"
-echo -e "${CYAN} One command to build your workspace   ${NC}"
-echo -e "${BLUE}=======================================${NC}"
-echo -e "Detected System: ${YELLOW}$MACHINE${NC}"
-echo ""
+echo -e "${BLUE}╭──────────────────────────────────────────╮${NC}"
+echo -e "${BLUE}│${NC} ${GREEN}                DevForge                ${NC} ${BLUE}│${NC}"
+echo -e "${BLUE}│${NC} ${CYAN}  One command to build your workspace   ${NC} ${BLUE}│${NC}"
+echo -e "${BLUE}╰──────────────────────────────────────────╯${NC}"
+echo -e "Detected System: ${YELLOW}$MACHINE${NC}\n"
 
 setup_package_manager
 
 while true; do
     echo -e "\n${CYAN}What technology would you like to set up?${NC}"
-    echo "1) Flutter"
-    echo "2) React Native"
-    echo "3) Python"
-    echo "q) Quit"
+    echo -e "  [1] 🔵 Flutter"
+    echo -e "  [2] ⚛️  React Native"
+    echo -e "  [3] 🐍 Python"
+    echo -e "  [q] ❌ Quit"
+    echo ""
     read -p "Select an option (1-3, q): " TECH_OPT
 
     case $TECH_OPT in

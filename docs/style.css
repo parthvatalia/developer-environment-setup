@@ -283,6 +283,30 @@ code { color: #cecece; word-break: break-all; }
     100% { background-position: 0% 50%; }
 }
 
+.star-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-main);
+    text-decoration: none;
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 1.1rem;
+    border: 1px solid var(--border-color);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.star-btn:hover {
+    border-color: #ffbd2e;
+    color: #ffbd2e;
+    background: rgba(255, 189, 46, 0.1);
+    transform: translateY(-2px);
+    box-shadow: 0 0 15px rgba(255, 189, 46, 0.2);
+}
+
 /* Sections */
 .features-section {
     max-width: 1000px;

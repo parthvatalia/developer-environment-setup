@@ -13,10 +13,10 @@ function Write-Color {
 }
 
 function Write-Header {
-    Write-Color "=======================================" "Cyan"
-    Write-Color "             DevForge                  " "Green"
-    Write-Color " One command to build your workspace   " "Cyan"
-    Write-Color "=======================================" "Cyan"
+    Write-Color "╭──────────────────────────────────────────╮" "Cyan"
+    Write-Color "│                 DevForge                 │" "Green"
+    Write-Color "│   One command to build your workspace    │" "Cyan"
+    Write-Color "╰──────────────────────────────────────────╯" "Cyan"
     Write-Host ""
 }
 
@@ -62,10 +62,10 @@ function Add-ToPath {
 # --- Technology Profiles ---
 
 function Setup-Flutter {
-    Write-Color "`n--- Flutter Setup ---" "Cyan"
-    Write-Host "1) Full Setup (SDK, Android Studio, VS Code)"
-    Write-Host "2) Only SDK"
-    Write-Host "3) Only IDEs (Android Studio & VS Code)"
+    Write-Color "`n╭── Flutter Setup ──╮" "Cyan"
+    Write-Host "  [1] 📦 Full Setup (SDK, Android Studio, VS Code)"
+    Write-Host "  [2] 🛠️  Only SDK"
+    Write-Host "  [3] 💻 Only IDEs (Android Studio & VS Code)`n"
     
     $FlutterOpt = Read-Host "Select option (1-3)"
 
@@ -90,9 +90,9 @@ function Setup-Flutter {
 }
 
 function Setup-ReactNative {
-    Write-Color "`n--- React Native Setup ---" "Cyan"
-    Write-Host "1) Full Setup (Node, JDK, Android Studio, VS Code)"
-    Write-Host "2) Only SDKs (Node, JDK)"
+    Write-Color "`n╭── React Native Setup ──╮" "Cyan"
+    Write-Host "  [1] 📦 Full Setup (Node, JDK, Android Studio, VS Code)"
+    Write-Host "  [2] 🛠️  Only SDKs (Node, JDK)`n"
     
     $RnOpt = Read-Host "Select option (1-2)"
 
@@ -118,9 +118,9 @@ function Setup-ReactNative {
 }
 
 function Setup-Python {
-    Write-Color "`n--- Python Setup ---" "Cyan"
-    Write-Host "1) Full Setup (Python, VS Code)"
-    Write-Host "2) Only SDK (Python)"
+    Write-Color "`n╭── Python Setup ──╮" "Cyan"
+    Write-Host "  [1] 📦 Full Setup (Python, VS Code)"
+    Write-Host "  [2] 🛠️  Only SDK (Python)`n"
     
     $PyOpt = Read-Host "Select option (1-2)"
 
@@ -143,10 +143,10 @@ Setup-PackageManager
 
 while ($true) {
     Write-Color "`nWhat technology would you like to set up?" "Cyan"
-    Write-Host "1) Flutter"
-    Write-Host "2) React Native"
-    Write-Host "3) Python"
-    Write-Host "q) Quit"
+    Write-Host "  [1] 🔵 Flutter"
+    Write-Host "  [2] ⚛️  React Native"
+    Write-Host "  [3] 🐍 Python"
+    Write-Host "  [q] ❌ Quit`n"
     
     $TechOpt = Read-Host "Select an option (1-3, q)"
 

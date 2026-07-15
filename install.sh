@@ -25,10 +25,18 @@ esac
 install_package() {
     local pkg=$1
     local cmd_name=${2:-$pkg}
+    local app_name=$3
 
     if command -v "$cmd_name" &> /dev/null; then
         echo -e "✅ ${GREEN}$pkg${NC} is already installed (found in PATH)."
         return 0
+    fi
+
+    if [ "$MACHINE" == "Mac" ] && [ -n "$app_name" ]; then
+        if [ -d "/Applications/$app_name" ] || [ -d "$HOME/Applications/$app_name" ]; then
+            echo -e "✅ ${GREEN}$pkg${NC} is already installed (found in Applications)."
+            return 0
+        fi
     fi
 
     if [ "$MACHINE" == "Mac" ]; then
@@ -100,8 +108,8 @@ setup_flutter() {
     if [[ "$FLUTTER_OPT" == "1" || "$FLUTTER_OPT" == "3" ]]; then
         echo -e "${CYAN}Installing IDEs and toolchains...${NC}"
         if [ "$MACHINE" == "Mac" ]; then
-            install_package visual-studio-code code
-            install_package android-studio studio
+            install_package visual-studio-code code "Visual Studio Code.app"
+            install_package android-studio studio "Android Studio.app"
             install_package cocoapods pod
             echo -e "${CYAN}Setting up Android SDK paths...${NC}"
             add_to_path "\$HOME/Library/Android/sdk/platform-tools"
@@ -147,8 +155,8 @@ setup_react_native() {
         echo -e "${CYAN}Installing Mobile Toolchains...${NC}"
         if [ "$MACHINE" == "Mac" ]; then
             install_package cocoapods pod
-            install_package android-studio studio
-            install_package visual-studio-code code
+            install_package android-studio studio "Android Studio.app"
+            install_package visual-studio-code code "Visual Studio Code.app"
             echo -e "${CYAN}Setting up Android SDK paths...${NC}"
             add_to_path "\$HOME/Library/Android/sdk/platform-tools"
             add_to_path "\$HOME/Library/Android/sdk/cmdline-tools/latest/bin"
@@ -185,7 +193,7 @@ setup_python() {
         echo -e "${CYAN}Installing Package Managers & IDEs...${NC}"
         if [ "$MACHINE" == "Mac" ]; then
             install_package poetry
-            install_package visual-studio-code code
+            install_package visual-studio-code code "Visual Studio Code.app"
         else
             pip3 install poetry --break-system-packages || pip3 install poetry
             install_package code
